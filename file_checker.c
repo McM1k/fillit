@@ -6,14 +6,14 @@
 /*   By: gboudrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 13:56:35 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/06 17:46:38 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/06 17:49:11 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-static int			check_symbols(char *buf, int size)
+int			check_symbols(char *buf, int size)
 {
 	while (size > 0)
 	{
@@ -24,7 +24,7 @@ static int			check_symbols(char *buf, int size)
 	return (1);
 }
 
-static int			check_size(char *buf, int size)
+int			check_size(char *buf, int size)
 {
 	int			squ_x;
 	int			squ_y;
@@ -53,7 +53,7 @@ static int			check_size(char *buf, int size)
 	return (1);
 }
 
-static int			check_size_tetr(char **tetri)
+int			check_size_tetr(char **tetri)
 {
 	int			i;
 	int			j;
@@ -77,7 +77,7 @@ static int			check_size_tetr(char **tetri)
 	return (0);
 }
 
-static int			check_is_next_to(char **tetri)
+int			check_is_next_to(char **tetri)
 {
 	int			i;
 	int			j;
@@ -106,7 +106,7 @@ static int			check_is_next_to(char **tetri)
 	return (0);
 }
 
-static int			check_is_next_to2(char **tetri)
+int			check_is_next_to2(char **tetri)
 {
 	int			i;
 	int			j;

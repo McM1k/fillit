@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/06 19:05:26 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/06 19:07:42 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*file_opener(char *source)
 
 	if ((fd = open(source, O_RDONLY)) == -1)
 		return (NULL);
-	if ((ret = read(fd, buf, BUF_SIZE)) > 545)
+	ret = read(fd, buf, BUF_SIZE);
+	if (ret  > 545 || ret == -1)
 		return (NULL);
 	buf[ret] = '\0';
 	if (close(fd) == -1)

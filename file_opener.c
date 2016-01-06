@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/06 18:43:54 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/06 19:05:26 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 char	*file_opener(char *source)
 {
-	char	*buf[BUF_SIZE + 1];
+	char	buf[BUF_SIZE];
 	int		fd;
 	int		ret;
 

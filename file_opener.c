@@ -6,19 +6,25 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/06 17:22:30 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/06 18:43:54 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <fcntl.h>
 
-char	*file_opener(char	*source)
+char	*file_opener(char *source)
 {
-	char	*buf;
+	char	*buf[BUF_SIZE + 1];
 	int		fd;
+	int		ret;
 
-	buf = NULL;
 	if ((fd = open(source, O_RDONLY)) == -1)
+		return (NULL);
+	if ((ret = read(fd, buf, BUF_SIZE)) > 545)
+		return (NULL);
+	buf[ret] = '\0';
+	if (close(fd) == -1)
 		return (NULL);
 	return (buf);
 }

@@ -6,7 +6,7 @@
 /*   By: gboudrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 13:56:35 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/05 23:52:53 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/06 17:46:38 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int			check_symbols(char *buf, int size)
 	return (1);
 }
 
-	static int			check_size(char *buf, int size)
+static int			check_size(char *buf, int size)
 {
 	int			squ_x;
 	int			squ_y;
@@ -91,9 +91,9 @@ static int			check_is_next_to(char **tetri)
 		{
 			if (tetri[i][j] == '#')
 			{
-				if ((tetri[i][j + 1] == '#') || (tetri[i][j - 1] == '#'))
+				if (tetri[i][j + 1] == '#')
 					valid++;
-				else if ((tetri[i + 1][j] == '#') || (tetri[i - 1][j] == '#'))
+				else if (tetri[i + 1][j] == '#')
 					valid++;
 			}
 			j++;
@@ -108,34 +108,29 @@ static int			check_is_next_to(char **tetri)
 
 static int			check_is_next_to2(char **tetri)
 {
-    int         i;
-    int         j;
+	int			i;
+	int			j;
 	int			valid;
 
-    i = 0;
-    valid = 0;
-    while (i < 4)
-    {
-        while (j < 4)
-        {
+	i = 0;
+	while (i < 4)
+	{
+		while (j < 4)
+		{
+			valid = 0;
 			if (tetri[i][j] == '#')
-            {
-                if (tetri[i][j + 1] == '#')
+			{
+				if (tetri[i][j + 1] == '#')
 					valid++;
-				if (tetri[i][j - 1] == '#')
-                    valid++;
-                if (tetri[i + 1][j] == '#')
-					valid++;
-				if (tetri[i - 1][j] == '#')
+				if (tetri[i + 1][j] == '#')
 					valid++;
 				if (valid > 1)
 					return (1);
-            }
-			valid = 0;
-            j++;
-        }
-        j = 0;
-        i++;
-    }
-    return (0);
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (0);
 }

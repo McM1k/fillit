@@ -44,6 +44,33 @@ static int	file_opener(char *source, char *buf)
 	return (ret);
 }
 
+t_tetr		*fill_tetri(t_tetr const *start, char *buf)
+{
+	t_tetr	*current;
+	char	*tmp;
+	int	i;
+	int	j;
+
+	current = (t_tetr *)start;
+	tmp = buf;
+	while (tmp)
+	{
+		i = 0;
+		while (i < 5)
+		{
+			
+			i++;
+		}
+		if (!check_next(tetri) && !check_next2(tetri) && !check_size_tetri(tetri))
+		{
+			ft_putendl("\n --- Error tetrimino ! --- \n");
+			return (NULL);
+		}
+		
+	}
+	return (start);
+}
+
 t_tetr		*init_tetri(char *source)
 {
 	int	size;
@@ -52,12 +79,10 @@ t_tetr		*init_tetri(char *source)
 
 	buf = (char *)ft_memalloc(sizeof(BUF_SIZE));
 	if ((size = init_buf(source, buf)) == -1)
-	return (NULL);
-	if (!check_next(tetri) && !check_next2(tetri) && !check_size_tetri(tetri))
-	{
-		ft_putendl("\n --- Error tetrimino ! --- \n");
 		return (NULL);
-	}
+	if ((fill_tetri(start, buf)) == NULL)
+		return (NULL);
+	ft_memdel(&buf);
 	return (start)
 }
 

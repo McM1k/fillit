@@ -29,24 +29,24 @@ int			check_size(char *buf, int size)
 	int			squ_x;
 	int			squ_y;
 
-	squ_x = 0;
-	squ_y = 0;
+	squ_x = 4;
+	squ_y = 4;
 	while (size > 0)
 	{
-		if (squ_y == 4)
+		if (squ_y == 0)
 		{
 			if (buf[size - 1] == '\n')
-				squ_y = 0;
+				squ_y = 4;
 			else
 				return (0);
 		}
 		else if (buf[size] == '\n')
 		{
-			if (squ_x == 4)
-				squ_y++;
+			if (squ_x == 0)
+				squ_y--;
 			else
 				return (0);
-			squ_x = 0;
+			squ_x = 4;
 		}
 		size--;
 	}

@@ -44,28 +44,38 @@ static int	file_opener(char *source, char *buf)
 	return (ret);
 }
 
-char		*init_buf(char *source)
+t_tetr		*init_tetri(char *source)
 {
+	int	size;
 	char	*buf;
-	int		size;
+	t_tetr	*start;
 
 	buf = (char *)ft_memalloc(sizeof(BUF_SIZE));
-	if ((size = file_opener(source, buf)) == -1)
-		return (NULL);
-	if (!check_symbols(buf, size))
-	{
-		ft_putendl("\n --- Error symbols ! --- \n");
-		return (NULL);
-	}
-	if (!check_size(buf, size))
-	{
-		ft_putendl("\n --- Error size source ! --- \n");
-		return (NULL);
-	}
+	if ((size = init_buf(source, buf)) == -1)
+	return (NULL);
 	if (!check_next(tetri) && !check_next2(tetri) && !check_size_tetri(tetri))
 	{
 		ft_putendl("\n --- Error tetrimino ! --- \n");
 		return (NULL);
 	}
-	return (buf);
+	return (start)
+}
+
+static int	init_buf(char *source, char *buf)
+{
+	int		size;
+
+	if ((size = file_opener(source, buf)) == -1)
+		return (-1);
+	if (!check_symbols(buf, size))
+	{
+		ft_putendl("\n --- Error symbols ! --- \n");
+		return (-1);
+	}
+	if (!check_size(buf, size))
+	{
+		ft_putendl("\n --- Error size source ! --- \n");
+		return (-1);
+	}
+	return (size);
 }

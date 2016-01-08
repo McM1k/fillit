@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/06 23:10:08 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/08 19:39:40 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <sys/uio.h>
 #include <unistd.h>
 
-static int	file_opener(char *source, char *buf)
+static int		file_opener(char *source, char *buf)
 {
 	int		fd;
 	int		ret;
@@ -44,49 +44,31 @@ static int	file_opener(char *source, char *buf)
 	return (ret);
 }
 
-t_tetr		*fill_tetri(t_tetr const *start, char *buf)
+static t_tetr	*fill_tetri(t_tetr *start, char *buf)
 {
 	t_tetr	*current;
 	char	*tmp;
-	int	i;
-	int	j;
+	int		nb;
 
-	current = (t_tetr *)start;
+	current = start;
 	tmp = buf;
-	while (tmp)
+	if ((nb = new_list(tmp, start)) == -1)
+		return (NULL);
+	while (nb)
 	{
-		i = 0;
-		while (i < 5)
-		{
-			
-			i++;
-		}
-		if (!check_next(tetri) && !check_next2(tetri) && !check_size_tetri(tetri))
+		if (!check_next(current->tetrimino)
+			&& !check_next2(current->tetrimino)
+			&& !check_size_tetri(current->tetrimino))
 		{
 			ft_putendl("\n --- Error tetrimino ! --- \n");
 			return (NULL);
 		}
-		
+		nb--;
 	}
 	return (start);
 }
 
-t_tetr		*init_tetri(char *source)
-{
-	int	size;
-	char	*buf;
-	t_tetr	*start;
-
-	buf = (char *)ft_memalloc(sizeof(BUF_SIZE));
-	if ((size = init_buf(source, buf)) == -1)
-		return (NULL);
-	if ((fill_tetri(start, buf)) == NULL)
-		return (NULL);
-	ft_memdel(&buf);
-	return (start)
-}
-
-static int	init_buf(char *source, char *buf)
+static int		init_buf(char *source, char *buf)
 {
 	int		size;
 
@@ -103,4 +85,20 @@ static int	init_buf(char *source, char *buf)
 		return (-1);
 	}
 	return (size);
+}
+
+t_tetr			*init_tetri(char *source)
+{
+	int		size;
+	char	*buf;
+	t_tetr	*start;
+
+	start = NULL;
+	buf = (char *)ft_memalloc(sizeof(BUF_SIZE));
+	if ((size = init_buf(source, buf)) == -1)
+		return (NULL);
+	if ((fill_tetri(start, buf)) == NULL)
+		return (NULL);
+	ft_memdel((void **)&buf);
+	return (start);
 }

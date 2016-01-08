@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/08 19:39:40 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/08 21:46:57 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ static int		file_opener(char *source, char *buf)
 		ft_putendl("\n --- Can't close file ! ---\n");
 		return (-1);
 	}
+	ft_putendl(buf);
 	return (ret);
 }
 
-static t_tetr	*fill_tetri(t_tetr *start, char *buf)
+static int		fill_tetri(t_tetr *start, char *buf)
 {
 	t_tetr	*current;
 	char	*tmp;
@@ -53,7 +54,7 @@ static t_tetr	*fill_tetri(t_tetr *start, char *buf)
 	current = start;
 	tmp = buf;
 	if ((nb = new_list(tmp, start)) == -1)
-		return (NULL);
+		return (-1);
 	while (nb)
 	{
 		if (!check_next(current->tetrimino)
@@ -61,11 +62,11 @@ static t_tetr	*fill_tetri(t_tetr *start, char *buf)
 			&& !check_size_tetri(current->tetrimino))
 		{
 			ft_putendl("\n --- Error tetrimino ! --- \n");
-			return (NULL);
+			return (-1);
 		}
 		nb--;
 	}
-	return (start);
+	return (nb);
 }
 
 static int		init_buf(char *source, char *buf)
@@ -87,18 +88,17 @@ static int		init_buf(char *source, char *buf)
 	return (size);
 }
 
-t_tetr			*init_tetri(char *source)
+int				init_tetri(char *source, t_tetr *start)
 {
 	int		size;
 	char	*buf;
-	t_tetr	*start;
+	int		nb;
 
-	start = NULL;
 	buf = (char *)ft_memalloc(sizeof(BUF_SIZE));
 	if ((size = init_buf(source, buf)) == -1)
-		return (NULL);
-	if ((fill_tetri(start, buf)) == NULL)
-		return (NULL);
+		return (-1);
+	if ((nb = fill_tetri(start, buf)) == -1)
+		return (-1);
 	ft_memdel((void **)&buf);
-	return (start);
+	return (nb);
 }

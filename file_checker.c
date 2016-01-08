@@ -6,7 +6,7 @@
 /*   By: gboudrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 13:56:35 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/08 19:40:56 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/08 21:37:06 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int			check_size(char *buf, int size)
 	return (1);
 }
 
-int			check_size_tetr(char **tetri)
+int			check_size_tetri(char **tetri)
 {
 	int			i;
 	int			j;

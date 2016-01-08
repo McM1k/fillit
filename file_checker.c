@@ -6,7 +6,7 @@
 /*   By: gboudrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 13:56:35 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/06 17:49:11 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/08 19:40:56 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int			check_size_tetr(char **tetri)
 	return (0);
 }
 
-int			check_is_next_to(char **tetri)
+int			check_next(char **tetri)
 {
 	int			i;
 	int			j;
@@ -106,7 +106,7 @@ int			check_is_next_to(char **tetri)
 	return (0);
 }
 
-int			check_is_next_to2(char **tetri)
+int			check_next2(char **tetri)
 {
 	int			i;
 	int			j;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gboudrie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/18 13:56:35 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/10 16:13:47 by vroussea         ###   ########.fr       */
+/*   Created: 2016/01/10 19:12:40 by vroussea          #+#    #+#             */
+/*   Updated: 2016/01/10 19:12:45 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ int			check_next(char **tetri)
 		j = 0;
 		i++;
 	}
-	if (valid == 4)
-		return (1);
-	return (0);
+	if ((valid = valid + check_next2(tetri)) < 5)
+		return (0)
+	return (1);
 }
 
 int			check_next2(char **tetri)
@@ -111,25 +111,23 @@ int			check_next2(char **tetri)
 	int			j;
 	int			valid;
 
-	i = 0;
-	while (i < 4)
+	i = 4;
+	while (i > 0)
 	{
-		while (j < 4)
+		while (j > 0)
 		{
 			valid = 0;
 			if (tetri[i][j] == '#')
 			{
-				if (tetri[i][j + 1] == '#')
+				if (tetri[i][j - 1] == '#')
 					valid++;
-				if (tetri[i + 1][j] == '#')
+				else if (tetri[i - 1][j] == '#')
 					valid++;
-				if (valid > 1)
-					return (1);
 			}
-			j++;
+			j--;
 		}
-		j = 0;
-		i++;
+		j = 4;
+		i--;
 	}
-	return (0);
+	return (valid);
 }

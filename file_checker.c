@@ -6,7 +6,7 @@
 /*   By: gboudrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 13:56:35 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/10 16:09:06 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/10 16:13:47 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			check_size(char *buf, int size)
 				squ_x++;
 			}
 			squ_y++;
+			size--;
 		}
 	}
 	return (1);

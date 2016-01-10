@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/10 15:55:49 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/10 18:41:24 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,25 @@ static int		file_opener(char *source, char *buf)
 	return (ret);
 }
 
-static int		fill_tetri(t_tetr *start, char *buf)
+static int		fill_tetri(t_tetr **start, char *buf)
 {
 	t_tetr	*current;
 	char	*tmp;
 	int		nb;
 
-	current = start;
 	tmp = buf;
 	if ((nb = new_list(tmp, start)) == -1)
 		return (-1);
-	while (nb)
+	current = *start;
+	while (nb && current)
 	{
-		if (!check_next(current->tetrimino)
+	/*	if (!check_next(current->tetrimino)
 			&& !check_next2(current->tetrimino)
 			&& !check_size_tetri(current->tetrimino))
 		{
 			ft_putendl("\n --- Error tetrimino ! --- \n");
 			return (-1);
-		}
+		}*/
 		current = current->next;
 		nb--;
 	}
@@ -90,7 +90,7 @@ static int		init_buf(char *source, char *buf)
 	return (size);
 }
 
-int				init_tetri(char *source, t_tetr *start)
+int				init_tetri(char *source, t_tetr **start)
 {
 	int		size;
 	char	*buf;

@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:37:38 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/10 15:30:48 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/10 18:38:41 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct		s_tetr
 	struct s_tetr	*next;
 }					t_tetr;
 
-int					init_tetri(char *source, t_tetr *start);
-int					new_list(char *buf, t_tetr *start);
+int					init_tetri(char *source, t_tetr **start);
+int					new_list(char *buf, t_tetr **start);
 int					check_symbols(char *buf, int size);
 int					check_size(char *buf, int size);
 int					check_size_tetri(char **tetri);

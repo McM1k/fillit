@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/10 15:26:55 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/10 15:55:49 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static int		fill_tetri(t_tetr *start, char *buf)
 			ft_putendl("\n --- Error tetrimino ! --- \n");
 			return (-1);
 		}
+		current = current->next;
 		nb--;
 	}
 	return (nb);

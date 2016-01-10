@@ -6,7 +6,7 @@
 /*   By: gboudrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 13:56:35 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/10 14:39:33 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/10 16:09:06 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,23 @@ int			check_size(char *buf, int size)
 	int			squ_x;
 	int			squ_y;
 
-	squ_x = 4;
-	squ_y = 4;
-	while (size > 0)
+	while (size >= 0)
 	{
 		size--;
-		if (squ_y == 0)
+		squ_y = 0;
+		while (squ_y < 4)
 		{
-			if (buf[size] == '\n')
-				squ_y = 4;
-			else
+			squ_x = 0;
+			if (buf[size] != '\n')
 				return (0);
-		}
-		else if (buf[size] == '\n')
-		{
-			if (squ_x == 0)
-				squ_y--;
-			else
-				return (0);
-			squ_x = 4;
+			while (squ_x < 4)
+			{
+				size--;
+				if (size < 0 || buf[size] == '\n')
+					return (0);
+				squ_x++;
+			}
+			squ_y++;
 		}
 	}
 	return (1);

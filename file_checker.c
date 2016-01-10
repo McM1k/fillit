@@ -6,7 +6,7 @@
 /*   By: gboudrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 13:56:35 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/08 21:37:06 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/10 14:36:15 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int			check_symbols(char *buf, int size)
 {
 	while (size > 0)
 	{
+		size--;
 		if ((buf[size] != '.') && (buf[size] != '#') && (buf[size] != '\n'))
 			return (0);
-		size--;
 	}
 	return (1);
 }

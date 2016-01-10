@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/10 19:12:40 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/10 19:12:45 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/10 20:07:30 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int			check_next(char **tetri)
 		i++;
 	}
 	if ((valid = valid + check_next2(tetri)) < 5)
-		return (0)
+		return (0);
 	return (1);
 }
 

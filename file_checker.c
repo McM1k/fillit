@@ -6,7 +6,7 @@
 /*   By: gboudrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 13:56:35 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/10 14:37:29 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/10 14:39:33 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			check_size(char *buf, int size)
 		size--;
 		if (squ_y == 0)
 		{
-			if (buf[size - 1] == '\n')
+			if (buf[size] == '\n')
 				squ_y = 4;
 			else
 				return (0);

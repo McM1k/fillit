@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/08 21:46:57 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/10 15:26:55 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ static int		init_buf(char *source, char *buf)
 		ft_putendl("\n --- Error size source ! --- \n");
 		return (-1);
 	}
+	ft_putendl("init_buf ok");
 	return (size);
 }
 
@@ -100,5 +101,6 @@ int				init_tetri(char *source, t_tetr *start)
 	if ((nb = fill_tetri(start, buf)) == -1)
 		return (-1);
 	ft_memdel((void **)&buf);
+	ft_putendl("init_tetri ok");
 	return (nb);
 }

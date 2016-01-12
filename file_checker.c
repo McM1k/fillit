@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/10 19:12:40 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/12 15:40:27 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/12 18:01:45 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,12 @@ int			check_size_tetri(char **tetri)
 		j = 0;
 		while (j < 4)
 		{
-			ft_putchar(tetri[i][j]);
 			if (tetri[i][j] == '#')
 				size++;
 			j++;
 		}
 		i++;
 	}
-	ft_putstr("size : ");
-	ft_putnbr(size);
-	ft_putchar('\n');
 	if (size == 4)
 		return (1);
 	return (0);
@@ -90,16 +86,14 @@ int			check_next(char **tetri)
 	valid = 0;
 	while (i < 4)
 	{
-		ft_putendl("mdr");
 		j = 0;
 		while (j < 4)
 		{
-			ft_putendl("mdr2");
 			if (tetri[i][j] == '#')
 			{
-				if (tetri[i][j + 1] == '#')
+				if (j < 3 && tetri[i][j + 1] == '#')
 					valid++;
-				else if (tetri[i + 1][j] == '#')
+				if (i < 3 && tetri[i + 1][j] == '#')
 					valid++;
 			}
 			j++;
@@ -126,9 +120,9 @@ int			check_next2(char **tetri)
 		{
 			if (tetri[i][j] == '#')
 			{
-				if (tetri[i][j - 1] == '#')
+				if (j > 0 && tetri[i][j - 1] == '#')
 					valid++;
-				else if (tetri[i - 1][j] == '#')
+				if (i > 0 && tetri[i - 1][j] == '#')
 					valid++;
 			}
 			j--;

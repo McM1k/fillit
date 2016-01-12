@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/12 14:42:45 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/12 18:02:10 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		nb = init_tetri(argv[1], &start);
-		ft_putendl("De retour dans le main");
 		current = start;
 		while (nb > 0)
 		{

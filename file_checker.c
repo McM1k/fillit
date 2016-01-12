@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/10 19:12:40 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/10 21:50:26 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/12 15:40:27 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,19 @@ int			check_size_tetri(char **tetri)
 	size = 0;
 	while (i < 4)
 	{
+		j = 0;
 		while (j < 4)
 		{
+			ft_putchar(tetri[i][j]);
 			if (tetri[i][j] == '#')
 				size++;
 			j++;
 		}
-		j = 0;
 		i++;
 	}
+	ft_putstr("size : ");
+	ft_putnbr(size);
+	ft_putchar('\n');
 	if (size == 4)
 		return (1);
 	return (0);
@@ -86,8 +90,11 @@ int			check_next(char **tetri)
 	valid = 0;
 	while (i < 4)
 	{
+		ft_putendl("mdr");
+		j = 0;
 		while (j < 4)
 		{
+			ft_putendl("mdr2");
 			if (tetri[i][j] == '#')
 			{
 				if (tetri[i][j + 1] == '#')
@@ -97,7 +104,6 @@ int			check_next(char **tetri)
 			}
 			j++;
 		}
-		j = 0;
 		i++;
 	}
 	if ((valid = valid + check_next2(tetri)) < 5)
@@ -111,9 +117,11 @@ int			check_next2(char **tetri)
 	int			j;
 	int			valid;
 
-	i = 4;
+	i = 3;
+	valid = 0;
 	while (i > 0)
 	{
+		j = 3;
 		while (j > 0)
 		{
 			if (tetri[i][j] == '#')
@@ -125,7 +133,6 @@ int			check_next2(char **tetri)
 			}
 			j--;
 		}
-		j = 4;
 		i--;
 	}
 	return (valid);

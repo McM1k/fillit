@@ -6,13 +6,27 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:32:19 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/14 21:22:38 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:35:09 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	printer(t_tetr *ptr, char **tab)
+static void	free_tab(char **tab)
+{
+	int		i;
+
+	i = 0;
+	while (tab[i] != NULL)
+	{
+		putendl(tab[i]);
+		free(&tab[i]);
+		i++;
+	}
+	free(&&tab);
+}
+
+void		printer(t_tetr *ptr, char **tab)
 {
 	int		i;
 	int		j;
@@ -33,4 +47,5 @@ void	printer(t_tetr *ptr, char **tab)
 		}
 		ptr = ptr->next;
 	}
+	freetab(tab);
 }

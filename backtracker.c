@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/14 20:19:57 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:11:03 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	check_pos(int x, int y, t_tetr *tetr, int size)
 	return (1);
 }
 
-static int	check_pos2(t_tetr *start, int x, int y, t_tetr *tetr, int size)
+static int	check_pos2(t_tetr *start, int x, int y, t_tetr *tetr)
 {
 	int		i;
 	int		j;

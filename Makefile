@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/01/10 20:10:04 by vroussea         ###   ########.fr        #
+#    Updated: 2016/01/14 21:21:56 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME =		fillit
 INCLUDESDIR =.
 CC =		clang
 CFLAGS =	-Wall -Wextra -Werror -g
-SOURCES =	file_checker.c file_opener.c init_list.c main.c
+SOURCES =	file_checker.c file_opener.c init_list.c main.c backtracker.c      \
+			printer.c
 
 all :		$(NAME)
 $(NAME) :

@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:37:38 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/10 18:38:41 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:22:35 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ int					check_size(char *buf, int size);
 int					check_size_tetri(char **tetri);
 int					check_next(char **tetri);
 int					check_next2(char **tetri);
+int					backtrack_tetr(t_tetr *start, t_tetr *tetr, int size);
+void				printer(t_tetr *ptr, char **tab);
 #endif

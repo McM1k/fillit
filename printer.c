@@ -6,13 +6,13 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:32:19 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/14 21:15:26 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:22:38 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			printer(t_tetr *ptr, char **tab)
+void	printer(t_tetr *ptr, char **tab)
 {
 	int		i;
 	int		j;

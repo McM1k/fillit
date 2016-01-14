@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/14 21:11:03 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:21:26 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	check_pos2(t_tetr *start, int x, int y, t_tetr *tetr)
 	return (1);
 }
 
-int			backtrack_tetr(t_tetr start, t_tetr *tetr, int size)
+int			backtrack_tetr(t_tetr *start, t_tetr *tetr, int size)
 {
 	int		i;
 	int		j;
@@ -83,7 +83,7 @@ int			backtrack_tetr(t_tetr start, t_tetr *tetr, int size)
 		while (j < size)
 		{
 			if (check_pos(i, j, tetr, size) == 1
-				&& check_pos2(start, i, j, tetr, size) == 1)
+				&& check_pos2(start, i, j, tetr) == 1)
 			{
 				tetr->x = i;
 				tetr->y = j;

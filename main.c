@@ -6,26 +6,43 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/12 18:02:10 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/14 17:44:36 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	main(int argc, char **argv)
+static int	size_tab(int nb)
+{
+	int	size;
+
+	nb = nb * 4;
+	size = nb;
+	while ((size = ft_sqrt(size)) == -1)
+	{
+		nb++;
+		size = nb;
+	}
+	return (size);
+}
+
+int			main(int argc, char **argv)
 {
 	t_tetr	*start;
-	t_tetr	*current;
+	t_tetr	*current; //
 	int		nb;
-	int		i;
-	int		j;
+	int		i; // inutils :
+	int		j; //
+	int		k; //
 
 	start = NULL;
 	if (argc == 2)
 	{
 		nb = init_tetri(argv[1], &start);
+		size_tab(nb)
 		current = start;
-		while (nb > 0)
+		k = nb;
+		while (k > 0)
 		{
 			i = 0;
 			while (i < 4)
@@ -39,13 +56,14 @@ int	main(int argc, char **argv)
 				ft_putchar('\n');
 				i++;
 			}
-			if (nb > 1)
+			if (k > 1)
 			{
 				ft_putchar('\n');
 				current = current->next;
 			}
-			nb--;
+			k--;
 		}
+		//backtracker(start, tab, size_tab(nb));
 	}
 	return (0);
 }

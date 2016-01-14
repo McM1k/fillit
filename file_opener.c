@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/12 18:02:03 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:03:04 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int		fill_tetri(t_tetr **start, char *buf)
 	int		i;
 
 	tmp = buf;
-	if ((nb = new_list(tmp, start)) == -1)
+	if ((nb = new_list(tmp, start)) == 0)
 		return (-1);
 	i = nb;
 	current = *start;

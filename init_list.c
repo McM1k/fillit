@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/10 18:48:18 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/12 15:26:00 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:02:31 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ int				new_list(char *buf, t_tetr **start)
 		buf++;
 	while (i < nb)
 	{
-		tmp->next = new_node(buf + current);
+		if (!(tmp->next = new_node(buf + current)))
+			return (0);
 		tmp = tmp->next;
 		tmp->nbr = 'A' + i;
 		i++;

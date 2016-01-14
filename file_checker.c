@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/10 19:12:40 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/12 18:01:45 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/14 22:17:34 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,10 @@ int			check_next2(char **tetri)
 
 	i = 3;
 	valid = 0;
-	while (i > 0)
+	while (i >= 0)
 	{
 		j = 3;
-		while (j > 0)
+		while (j >= 0)
 		{
 			if (tetri[i][j] == '#')
 			{

@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:32:19 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/14 21:35:09 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:37:37 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	free_tab(char **tab)
 	i = 0;
 	while (tab[i] != NULL)
 	{
-		putendl(tab[i]);
-		free(&tab[i]);
+		ft_putendl(tab[i]);
+		ft_strdel(&tab[i]);
 		i++;
 	}
-	free(&&tab);
+	ft_memdel((void **)tab);
 }
 
 void		printer(t_tetr *ptr, char **tab)
@@ -47,5 +47,5 @@ void		printer(t_tetr *ptr, char **tab)
 		}
 		ptr = ptr->next;
 	}
-	freetab(tab);
+	free_tab(tab);
 }

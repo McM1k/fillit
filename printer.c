@@ -6,11 +6,31 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:32:19 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/14 21:37:37 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:49:18 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+static char	**dot_filler(char **tab, int size)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (tab[i] != NULL)
+	{
+		j = 0;
+		while (tab[i][j] != '\0')
+		{
+			if (!((tab[i][j] >= 'A') && (tab[i][j] <= 'Z')))
+				tab[i][j] = '.';
+			j++;
+		}
+		i++;
+	}
+	return (tab);
+}
 
 static void	free_tab(char **tab)
 {
@@ -26,7 +46,7 @@ static void	free_tab(char **tab)
 	ft_memdel((void **)tab);
 }
 
-void		printer(t_tetr *ptr, char **tab)
+void		printer(t_tetr *ptr, char **tab, int size)
 {
 	int		i;
 	int		j;

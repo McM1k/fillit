@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/10 18:48:18 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/10 20:50:21 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/12 15:26:00 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,26 @@
 
 static t_tetr	*fill_node(char *buf, t_tetr *new)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	int		k;
 
-	ft_putendl(buf);
+	k = 0;
 	i = 0;
+	while (buf[k] == '\n')
+		buf++;
 	while (i < 4)
 	{
 		j = 0;
 		while (j < 4)
 		{
-			ft_putendl("test1");
-			ft_putendl(buf);
-			new->tetrimino[i][j] = *buf;
-			buf++;
+			new->tetrimino[i][j] = buf[k];
 			j++;
-			ft_putendl("test2");
-			ft_putendl(buf);
+			k++;
 		}
-		buf++;
+		k++;
 		i++;
 	}
-	ft_putendl(buf);
 	return (new);
 }
 
@@ -49,14 +47,12 @@ static t_tetr	*new_node(char *buf)
 	if (!(new->tetrimino = (char **)ft_memalloc(sizeof(char *) * 4)))
 		return (NULL);
 	i = 0;
-	ft_putendl(buf);
 	while (i < 4)
 	{
 		if (!(new->tetrimino[i] = ft_strnew(4)))
 			return (NULL);
 		i++;
 	}
-	ft_putendl(buf);
 	return (fill_node(buf, new));
 }
 
@@ -73,8 +69,6 @@ static int		nb_tetri(char *buf)
 			nb_tetri++;
 		i++;
 	}
-	if ((nb_tetri % 4) != 0)
-		return (-1);
 	return (nb_tetri / 4);
 }
 
@@ -82,23 +76,25 @@ int				new_list(char *buf, t_tetr **start)
 {
 	int		nb;
 	int		i;
+	int		current;
+	t_tetr	*tmp;
 
-	if ((nb = nb_tetri(buf)) == -1)
-	{
-		ft_putendl("\n --- Error tetrimino  file ! ---\n");
-		return (-1);
-	}
-	*start = new_node(buf);
+	nb = nb_tetri(buf);
+	tmp = new_node(buf);
+	*start = tmp;
+	tmp->nbr = 'A';
 	i = 1;
+	current = 21;
+	if (*buf == '\n')
+		buf++;
 	while (i < nb)
 	{
-		(*start)->next = new_node(buf);
-		if (*buf == '\n')
-			buf++;
-		(*start)->nbr = 'A' + i;
-		*start = (*start)->next;
+		tmp->next = new_node(buf + current);
+		tmp = tmp->next;
+		tmp->nbr = 'A' + i;
 		i++;
+		current = current + 21;
 	}
-	(*start)->next = NULL;
+	tmp->next = NULL;
 	return (nb);
 }

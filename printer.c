@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:32:19 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/14 21:49:18 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/14 21:52:51 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static char	**dot_filler(char **tab, int size)
 	int		j;
 
 	i = 0;
-	while (tab[i] != NULL)
+	while (i < size)
 	{
 		j = 0;
-		while (tab[i][j] != '\0')
+		while (j < size)
 		{
 			if (!((tab[i][j] >= 'A') && (tab[i][j] <= 'Z')))
 				tab[i][j] = '.';
@@ -67,5 +67,6 @@ void		printer(t_tetr *ptr, char **tab, int size)
 		}
 		ptr = ptr->next;
 	}
+	dot_filler(tab, size);
 	free_tab(tab);
 }

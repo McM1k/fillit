@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:32:19 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/18 15:42:13 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/18 15:49:42 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,11 @@ static char	**dot_filler(char **tab, int size)
 	int		j;
 
 	i = 0;
-	ft_putnbr(size);
-	ft_putendl("");
 	while (i < size)
 	{
-		ft_putnbr(i);
 		j = 0;
-		ft_putendl("mdr");
 		while (j < size)
 		{
-			ft_putnbr(j);
-			ft_putendl("mdr2");
 			tab[i][j] = '.';
 			j++;
 		}
@@ -76,9 +70,7 @@ void		printer(t_tetr *ptr, int size)
 	char	**tab;
 
 	tab = tabnew(size);
-	ft_putendl("plantage-1");
 	dot_filler(tab, size);
-	ft_putendl("plantage0");
 	while (ptr != NULL)
 	{
 		i = 0;
@@ -93,9 +85,7 @@ void		printer(t_tetr *ptr, int size)
 			}
 			i++;
 		}
-		ft_putendl("plantage1");
 		ptr = ptr->next;
-		ft_putendl("plantage2");
 	}
 	free_tab(tab);
 }

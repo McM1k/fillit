@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/14 21:54:08 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/18 15:12:49 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,10 @@ static int	size_tab(int nb)
 	return (size);
 }
 
-static char **tabnew(int size)
-{
-	char	**tab;
-	int		i;
-
-	if (!(tab = (char **)ft_memalloc(size)))
-		return (NULL);
-	i = 0;
-	while (i < size)
-	{
-		if (!(tab[i] = ft_strnew(size)))
-			return (NULL);
-		i++;
-	}
-	return (tab);
-}
-
 int			main(int argc, char **argv)
 {
 	t_tetr	*start;
 	t_tetr	*current; //
-	char	**tab;
 	int		nb;
 	int		i; // inutils :
 	int		j; //
@@ -92,13 +74,12 @@ int			main(int argc, char **argv)
 			valid = backtrack_tetr(start, start, nb);
 			nb++;
 		}
-		if (!(tab = tabnew(nb)) || valid == 0)
+		if (valid == 0)
 		{
 			ft_putendl("\n --- Error, aborting program ! ---\n");
 			return (1);
 		}
-		ft_putendl("marche");
-		printer(start, tab, nb);
+		printer(start, nb);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/18 20:48:59 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:56:41 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ static int	check_pos3(int x, int y, t_tetr *tetr, t_tetr *current)
 	int		i;
 	int		j;
 
+	ft_putendl("begincheckpos3");
 	i = 0;
-	while (i < size)
+	while (i < 4)
 	{
 		j = 0;
-		while (j < size)
+		while (j < 4)
 		{
 			if (current->tetrimino[i][j] == '#')
 				if ((current->x + i == tetr->x + x)
@@ -31,6 +32,7 @@ static int	check_pos3(int x, int y, t_tetr *tetr, t_tetr *current)
 		}
 		j++;
 	}
+	ft_putendl("checkpos3`'");
 	return (1);
 }
 
@@ -53,10 +55,11 @@ static int	check_pos(int x, int y, t_tetr *tetr, int size)
 		}
 		i++;
 	}
+	ft_putendl("checkpos1");
 	return (1);
 }
 
-static int	check_pos2(t_tetr *start, int x, int y, t_tetr *tetr)
+static int	check_pos2(t_tetr *start, t_tetr *tetr)
 {
 	int		i;
 	int		j;
@@ -82,6 +85,7 @@ static int	check_pos2(t_tetr *start, int x, int y, t_tetr *tetr)
 		}
 		i++;
 	}
+	ft_putendl("checkpos2");
 	return (1);
 }
 
@@ -96,11 +100,11 @@ int			backtrack_tetr(t_tetr *start, t_tetr *tetr, int size)
 		j = -3;
 		while (j < size)
 		{
+			tetr->x = i;
+			tetr->y = j;
 			if (check_pos(i, j, tetr, size) == 1
-				&& check_pos2(start, i, j, tetr) == 1)
+				&& check_pos2(start, tetr) == 1)
 			{
-				tetr->x = i;
-				tetr->y = j;
 				if ((tetr->next) == NULL)
 					return (1);
 				if ((backtrack_tetr(start, tetr->next, size)) == 1)

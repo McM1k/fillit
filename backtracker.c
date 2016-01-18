@@ -6,13 +6,13 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/18 20:05:59 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:48:59 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	check_pos3(int x, int y, t_tetr *tetr, int size)
+static int	check_pos3(int x, int y, t_tetr *tetr, t_tetr *current)
 {
 	int		i;
 	int		j;
@@ -23,7 +23,9 @@ static int	check_pos3(int x, int y, t_tetr *tetr, int size)
 		j = 0;
 		while (j < size)
 		{
-			if (tetr->tetrimino[i][j] == '#')
+			if (current->tetrimino[i][j] == '#')
+				if ((current->x + i == tetr->x + x)
+					&& (current->y + j == tetr->y + y))
 					return (0);
 			i++;
 		}
@@ -58,7 +60,9 @@ static int	check_pos2(t_tetr *start, int x, int y, t_tetr *tetr)
 {
 	int		i;
 	int		j;
+	t_tetr	*current;
 
+	current = start;
 	i = 0;
 	while (i < 4)
 	{
@@ -67,7 +71,12 @@ static int	check_pos2(t_tetr *start, int x, int y, t_tetr *tetr)
 		{
 			if (tetr->tetrimino[i][j] == '#')
 			{
-				
+				while (current != tetr)
+				{
+					if (!(check_pos3(i, j, tetr, current)))
+						return (0);
+					current = current->next;
+				}
 			}
 			j++;
 		}

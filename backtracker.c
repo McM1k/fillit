@@ -6,19 +6,30 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/14 21:21:26 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:05:59 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			how_much_tetr(t_tetr *tetr_ptr)
+static int	check_pos3(int x, int y, t_tetr *tetr, int size)
 {
-	while (tetr_ptr->next)
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < size)
 	{
-		tetr_ptr = tetr_ptr->next;
+		j = 0;
+		while (j < size)
+		{
+			if (tetr->tetrimino[i][j] == '#')
+					return (0);
+			i++;
+		}
+		j++;
 	}
-	return ((int)(tetr_ptr->nbr - 'A' + 1));
+	return (1);
 }
 
 static int	check_pos(int x, int y, t_tetr *tetr, int size)
@@ -47,26 +58,20 @@ static int	check_pos2(t_tetr *start, int x, int y, t_tetr *tetr)
 {
 	int		i;
 	int		j;
-	t_tetr	*current;
 
-	current = start;
-	while (current->nbr < tetr->nbr)
+	i = 0;
+	while (i < 4)
 	{
-		i = 0;
-		while (i < 4)
+		j = 0;
+		while (j < 4)
 		{
-			j = 0;
-			while (j < 4)
+			if (tetr->tetrimino[i][j] == '#')
 			{
-				if (x >= 0 && y >= 0
-					&& current->tetrimino[i + x][j + y] == '#'
-					&& tetr->tetrimino[i + x][j + y] == '#')
-					return (0);
-				j++;
+				
 			}
-			i++;
+			j++;
 		}
-		current = current->next;
+		i++;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:32:19 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/18 15:54:29 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:05:17 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ void		printer(t_tetr *ptr, int size)
 	dot_filler(tab, size);
 	while (ptr != NULL)
 	{
+		ft_putchar(ptr->nbr);
+		ft_putendl("");
+		ft_putstr("x : ");
+		ft_putendl(ft_itoa(ptr->x));
+		ft_putstr("y : ");
+		ft_putendl(ft_itoa(ptr->y));
 		i = 0;
 		while (i < 4)
 		{
@@ -80,7 +86,9 @@ void		printer(t_tetr *ptr, int size)
 			while (j < 4)
 			{
 				if (ptr->tetrimino[i][j] == '#')
+				{
 					tab[ptr->x + i][ptr->y + j] = ptr->nbr;
+				}
 				j++;
 			}
 			i++;

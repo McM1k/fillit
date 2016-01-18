@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/10 18:48:18 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/14 21:02:31 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/18 17:15:20 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static t_tetr	*new_node(char *buf)
 			return (NULL);
 		i++;
 	}
+	new->x = -3;
+	new->y = -3;
 	return (fill_node(buf, new));
 }
 
@@ -69,6 +71,8 @@ static int		nb_tetri(char *buf)
 			nb_tetri++;
 		i++;
 	}
+	if ((nb_tetri % 4) != 0)
+		return (0);
 	return (nb_tetri / 4);
 }
 
@@ -79,7 +83,8 @@ int				new_list(char *buf, t_tetr **start)
 	int		current;
 	t_tetr	*tmp;
 
-	nb = nb_tetri(buf);
+	if ((nb = nb_tetri(buf)) == 0)
+		return (0);
 	tmp = new_node(buf);
 	*start = tmp;
 	tmp->nbr = 'A';

@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/18 15:12:49 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/18 16:46:48 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,19 @@ int			main(int argc, char **argv)
 		}
 		valid = 0;
 		nb = size_tab(nb);
+		ft_putendl("mdr");
 		while (!valid)
 		{
 			valid = backtrack_tetr(start, start, nb);
 			nb++;
 		}
+		ft_putendl("mdr2");
 		if (valid == 0)
 		{
-			ft_putendl("\n --- Error, aborting program ! ---\n");
+			ft_putendl("\n --- Error, can't fill it ! ---\n");
 			return (1);
 		}
-		printer(start, nb);
+		printer(start, --nb);
 	}
 	return (0);
 }

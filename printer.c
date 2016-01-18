@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:32:19 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/18 15:14:25 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/18 15:42:13 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	**tabnew(int size)
 	char	**tab;
 	int		i;
 
-	if (!(tab = (char **)ft_memalloc(size + 1)))
+	if (!(tab = (char **)ft_memalloc(sizeof(*tab) * size)))
 		return (NULL);
 	i = 0;
 	while (i < size)

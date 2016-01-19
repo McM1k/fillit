@@ -6,13 +6,13 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/19 16:36:12 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:48:46 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	check_pos3(int x, int y, t_tetr *tetr, t_tetr *current)
+static int	check_pos3(int x, int y, t_tetr *current)
 {
 	int		i;
 	int		j;
@@ -25,8 +25,8 @@ static int	check_pos3(int x, int y, t_tetr *tetr, t_tetr *current)
 		{
 			if (current->tetrimino[i][j] == '#')
 			{
-				if ((current->x + i == tetr->x + x)
-					&& (current->y + j == tetr->y + y))
+				if ((current->x + i == x)
+					&& (current->y + j == y))
 				{
 					return (0);
 				}
@@ -38,7 +38,7 @@ static int	check_pos3(int x, int y, t_tetr *tetr, t_tetr *current)
 	return (1);
 }
 
-static int	check_pos(int x, int y, t_tetr *tetr, int size)
+static int	check_pos(t_tetr *tetr, int size)
 {
 	int		i;
 	int		j;
@@ -50,8 +50,8 @@ static int	check_pos(int x, int y, t_tetr *tetr, int size)
 		while (j < 4)
 		{
 			if (tetr->tetrimino[i][j] == '#')
-				if ((i + x) >= size || (j + y) >= size
-					|| (i + x) < 0 || (j + y) < 0)
+				if ((i + tetr->x) >= size || (j + tetr->y) >= size
+					|| (i + tetr->x) < 0 || (j + tetr->y) < 0)
 					return (0);
 			j++;
 		}
@@ -77,7 +77,7 @@ static int	check_pos2(t_tetr *start, t_tetr *tetr)
 			{
 				while (current != tetr)
 				{
-					if (!(check_pos3(i, j, tetr, current)))
+					if (!(check_pos3(tetr->x + i, tetr->y + j, current)))
 						return (0);
 					current = current->next;
 				}
@@ -103,7 +103,7 @@ int			backtrack_tetr(t_tetr *start, t_tetr *tetr, int size)
 		{
 			tetr->x = i;
 			tetr->y = j;
-			if (check_pos(i, j, tetr, size) == 1
+			if (check_pos(tetr, size) == 1
 				&& check_pos2(start, tetr) == 1)
 			{
 				if ((tetr->next) == NULL)

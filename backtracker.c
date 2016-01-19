@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/19 15:08:02 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:36:12 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	check_pos2(t_tetr *start, t_tetr *tetr)
 
 	current = start;
 	i = 0;
-	while (i < 4)
+	while (i++ < 4)
 	{
 		j = 0;
 		while (j < 4)
@@ -82,6 +82,7 @@ static int	check_pos2(t_tetr *start, t_tetr *tetr)
 					current = current->next;
 				}
 			}
+			current = start;
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/19 15:04:12 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/19 15:08:02 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,17 @@ static int	check_pos3(int x, int y, t_tetr *tetr, t_tetr *current)
 	int		i;
 	int		j;
 
-	ft_putendl("begincheckpos3");
 	i = 0;
 	while (i < 4)
 	{
 		j = 0;
 		while (j < 4)
 		{
-			//	ft_putstr("i = ");
-			//ft_putnbr(i);
-			//ft_putstr(", j = ");
-			//ft_putnbr(j);
-			//ft_putendl("");
 			if (current->tetrimino[i][j] == '#')
 			{
-				//		ft_putstr("\n current->x + i = ");
-				//ft_putnbr(current->x + i);
-				//ft_putstr("\n current->y + j = ");
-				//ft_putnbr(current->y + j);
-				//ft_putstr("\n tetr->x + x = ");
-				//ft_putnbr(tetr->x + x);
-				//ft_putstr("\n tetr->y + y = ");
-				//ft_putnbr(tetr->y + y);
-
 				if ((current->x + i == tetr->x + x)
 					&& (current->y + j == tetr->y + y))
 				{
-					ft_putendl("checkpos3 FALSE");
 					return (0);
 				}
 			}
@@ -51,7 +35,6 @@ static int	check_pos3(int x, int y, t_tetr *tetr, t_tetr *current)
 		}
 		i++;
 	}
-	ft_putendl("checkpos3 TRUE");
 	return (1);
 }
 
@@ -74,7 +57,6 @@ static int	check_pos(int x, int y, t_tetr *tetr, int size)
 		}
 		i++;
 	}
-	ft_putendl("checkpos1");
 	return (1);
 }
 
@@ -104,7 +86,6 @@ static int	check_pos2(t_tetr *start, t_tetr *tetr)
 		}
 		i++;
 	}
-	ft_putendl("checkpos2");
 	return (1);
 }
 

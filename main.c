@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/19 17:02:51 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/19 18:02:36 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,7 @@ static int	size_tab(int nb)
 int			main(int argc, char **argv)
 {
 	t_tetr	*start;
-	t_tetr	*current; //
 	int		nb;
-	int		i; // inutils :
-	int		j; //
-	int		k; //
 	int		valid;
 
 	start = NULL;
@@ -43,29 +39,6 @@ int			main(int argc, char **argv)
 		{
 			ft_putendl("\n --- Error, aborting program ! ---\n");
 			return (1);
-		}
-		current = start;
-		k = nb;
-		while (k > 0)
-		{
-			i = 0;
-			while (i < 4)
-			{
-				j = 0;
-				while (j < 4)
-				{
-					ft_putchar(current->tetrimino[i][j]);
-					j++;
-				}
-				ft_putchar('\n');
-				i++;
-			}
-			if (k > 1)
-			{
-				ft_putchar('\n');
-				current = current->next;
-			}
-			k--;
 		}
 		valid = 0;
 		nb = size_tab(nb);

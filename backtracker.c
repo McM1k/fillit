@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/18 20:56:41 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/19 15:04:12 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,34 @@ static int	check_pos3(int x, int y, t_tetr *tetr, t_tetr *current)
 		j = 0;
 		while (j < 4)
 		{
+			//	ft_putstr("i = ");
+			//ft_putnbr(i);
+			//ft_putstr(", j = ");
+			//ft_putnbr(j);
+			//ft_putendl("");
 			if (current->tetrimino[i][j] == '#')
+			{
+				//		ft_putstr("\n current->x + i = ");
+				//ft_putnbr(current->x + i);
+				//ft_putstr("\n current->y + j = ");
+				//ft_putnbr(current->y + j);
+				//ft_putstr("\n tetr->x + x = ");
+				//ft_putnbr(tetr->x + x);
+				//ft_putstr("\n tetr->y + y = ");
+				//ft_putnbr(tetr->y + y);
+
 				if ((current->x + i == tetr->x + x)
 					&& (current->y + j == tetr->y + y))
+				{
+					ft_putendl("checkpos3 FALSE");
 					return (0);
-			i++;
+				}
+			}
+			j++;
 		}
-		j++;
+		i++;
 	}
-	ft_putendl("checkpos3`'");
+	ft_putendl("checkpos3 TRUE");
 	return (1);
 }
 

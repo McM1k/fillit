@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/19 16:48:46 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:52:59 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ static int	check_pos2(t_tetr *start, t_tetr *tetr)
 						return (0);
 					current = current->next;
 				}
+				current = start;
 			}
-			current = start;
 			j++;
 		}
 		i++;

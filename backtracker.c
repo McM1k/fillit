@@ -6,7 +6,7 @@
 /*   By: gboudrie <gboudrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:11:28 by gboudrie          #+#    #+#             */
-/*   Updated: 2016/01/19 17:02:53 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/19 17:05:28 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static int	check_pos2(t_tetr *start, t_tetr *tetr)
 		{
 			if (tetr->tetrimino[i][j] == '#')
 			{
+				current = start;
 				while (current->nbr != tetr->nbr)
 				{
 					if (!(check_pos3(tetr->x + i, tetr->y + j, current)))

@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/19 18:02:36 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/20 21:09:31 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,29 @@ static int	size_tab(int nb)
 	return (size);
 }
 
+static int	main_helper(int nb, t_tetr *start)
+{
+	int	valid;
+
+	valid = 0;
+	while (!valid)
+	{
+		valid = backtrack_tetr(start, start, nb);
+		nb++;
+	}
+	if (valid == 0)
+	{
+		ft_putendl("\n --- Error, can't fill it ! ---\n");
+		return (0);
+	}
+	printer(start, --nb);
+	return (1);
+}
+
 int			main(int argc, char **argv)
 {
 	t_tetr	*start;
 	int		nb;
-	int		valid;
 
 	start = NULL;
 	if (argc == 2)
@@ -40,19 +58,8 @@ int			main(int argc, char **argv)
 			ft_putendl("\n --- Error, aborting program ! ---\n");
 			return (1);
 		}
-		valid = 0;
 		nb = size_tab(nb);
-		while (!valid)
-		{
-			valid = backtrack_tetr(start, start, nb);
-			nb++;
-		}
-		if (valid == 0)
-		{
-			ft_putendl("\n --- Error, can't fill it ! ---\n");
-			return (1);
-		}
-		printer(start, --nb);
+		main_helper(nb, start);
 	}
-	return (0);
+	return (1);
 }

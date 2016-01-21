@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/20 21:09:31 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/21 15:14:35 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	main_helper(int nb, t_tetr *start)
 	}
 	if (valid == 0)
 	{
-		ft_putendl("\n --- Error, can't fill it ! ---\n");
+		ft_putendl("error");
 		return (0);
 	}
 	printer(start, --nb);
@@ -55,8 +55,8 @@ int			main(int argc, char **argv)
 	{
 		if ((nb = init_tetri(argv[1], &start)) == -1)
 		{
-			ft_putendl("\n --- Error, aborting program ! ---\n");
-			return (1);
+			ft_putendl("error");
+			return (0);
 		}
 		nb = size_tab(nb);
 		main_helper(nb, start);

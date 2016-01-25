@@ -45,6 +45,28 @@ static int	main_helper(int nb, t_tetr *start)
 	return (1);
 }
 
+////////////////////////
+static t_tetr		*free_lst(t_tetr start)
+{	
+	int	i;
+	t_tetr	*ptr;
+
+	while (start != NULL)
+	{
+		ptr = start;
+		i = 0;
+		while (i < 4)
+		{
+			free(start->tetrimino[i]);
+			i++;
+		}
+		free(start->tetrimino);
+		start = start->next;
+		free(ptr);
+	}
+}
+////////////////////////
+
 int			main(int argc, char **argv)
 {
 	t_tetr	*start;

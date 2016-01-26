@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/26 17:40:43 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/26 18:02:50 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ int			main(int argc, char **argv)
 		nb = size_tab(nb);
 		main_helper(nb, start);
 	}
+	else
+	{
+		ft_putendl("error");
+		return (0);
+	}
 	free_lst(start);
-	return (0);
+	return (1);
 }

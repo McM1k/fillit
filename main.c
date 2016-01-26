@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/21 15:14:35 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/26 12:25:48 by gboudrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ static int	main_helper(int nb, t_tetr *start)
 	return (1);
 }
 
-////////////////////////
-static t_tetr		*free_lst(t_tetr start)
+static void	free_lst(t_tetr *start)
 {	
 	int	i;
 	t_tetr	*ptr;
@@ -57,15 +56,14 @@ static t_tetr		*free_lst(t_tetr start)
 		i = 0;
 		while (i < 4)
 		{
-			free(start->tetrimino[i]);
+			ft_memdel((void **)(&(start->tetrimino[i])));
 			i++;
 		}
-		free(start->tetrimino);
+		ft_memdel((void **)(start->tetrimino));
 		start = start->next;
-		free(ptr);
+		ft_memdel((void **)(&ptr));
 	}
 }
-////////////////////////
 
 int			main(int argc, char **argv)
 {
@@ -83,5 +81,6 @@ int			main(int argc, char **argv)
 		nb = size_tab(nb);
 		main_helper(nb, start);
 	}
-	return (1);
+	free_lst(start);
+	return (0);
 }

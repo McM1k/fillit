@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/26 12:25:48 by gboudrie         ###   ########.fr       */
+/*   Updated: 2016/01/26 17:40:43 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int			main(int argc, char **argv)
 		if ((nb = init_tetri(argv[1], &start)) == -1)
 		{
 			ft_putendl("error");
+			free_lst(start);
 			return (0);
 		}
 		nb = size_tab(nb);

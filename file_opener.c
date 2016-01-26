@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:07:20 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/21 15:21:24 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/26 17:38:38 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,15 @@ int				init_tetri(char *source, t_tetr **start)
 
 	buf = (char *)ft_memalloc(BUF_SIZE);
 	if ((size = init_buf(source, buf)) == -1)
+	{
+		ft_memdel((void **)&buf);
 		return (-1);
+	}
 	if ((nb = fill_tetri(start, buf)) == -1)
+	{
+		ft_memdel((void **)&buf);
 		return (-1);
+	}
 	ft_memdel((void **)&buf);
 	return (nb);
 }

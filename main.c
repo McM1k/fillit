@@ -6,7 +6,7 @@
 /*   By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 21:22:01 by vroussea          #+#    #+#             */
-/*   Updated: 2016/01/26 18:02:50 by vroussea         ###   ########.fr       */
+/*   Updated: 2016/01/26 18:23:27 by vroussea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static int	main_helper(int nb, t_tetr *start)
 }
 
 static void	free_lst(t_tetr *start)
-{	
-	int	i;
+{
+	int		i;
 	t_tetr	*ptr;
 
 	while (start != NULL)
